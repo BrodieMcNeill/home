@@ -1,0 +1,77 @@
+/* Reset & basics */
+* {margin:0; padding:0; box-sizing:border-box;}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
+  color: #fff;
+  background: url('../img/background.jpg') no-repeat center center/cover;
+}
+
+/* Hue-shifting overlay */
+#color-overlay {
+  position: fixed;
+  top:0; left:0; width:100%; height:100%;
+  pointer-events:none;
+  z-index:0;
+  mix-blend-mode: overlay;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 50px;
+  max-width: 1000px;
+}
+
+/* Header */
+header h1 {font-size:3em; color:#FFA500; animation:fadeIn 2s ease forwards;}
+header p {font-size:1.2em; margin-top:10px; animation:fadeIn 2s ease forwards;}
+
+/* Profile Image */
+.profile-section {margin:30px 0;}
+.profile-img {width:150px; height:150px; border-radius:50%; border:4px solid #FFA500; transition: transform 0.3s ease;}
+
+/* Links */
+.links {margin:40px 0;}
+.link-btn {
+  display:inline-block; margin:10px; padding:10px 20px;
+  border:2px solid #00BFFF; border-radius:25px;
+  text-decoration:none; color:#fff; transition: all 0.3s ease; cursor:pointer;
+}
+.link-btn:hover {transform: scale(1.1);}
+.link-btn.pulse {animation:pulseBtn 2s infinite;}
+@keyframes pulseBtn {0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+
+/* Sections */
+.section {margin:50px 0;}
+.section h2 {font-size:2em; margin-bottom:20px;}
+
+/* Card flip container */
+.cards {display:flex; justify-content:center; gap:20px; flex-wrap:wrap;}
+.card {width:150px; height:100px; perspective:1000px;}
+.card-inner {
+  width:100%; height:100%;
+  position: relative; text-align:center;
+  transition: transform 0.6s; transform-style: preserve-3d;
+}
+.card:hover .card-inner {transform: rotateY(180deg);}
+.card-front, .card-back {
+  position:absolute; width:100%; height:100%; border-radius:15px;
+  display:flex; justify-content:center; align-items:center; backface-visibility:hidden;
+  color:#fff; text-align:center; padding:5px;
+}
+.card-front {background: rgba(0,0,0,0.5);}
+.card-back {background: rgba(255,165,0,0.7); transform: rotateY(180deg);}
+
+/* Easter egg */
+#secret {position:fixed;bottom:20px;right:20px;font-size:24px;display:none;}
+
+/* Animations */
+@keyframes fadeIn {from {opacity:0;} to {opacity:1;}}
